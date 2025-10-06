@@ -1,0 +1,9 @@
+beta-version/
+examples/
+setup/backup/
+setup/output/backup/
+test/
+*.zip
+*.7z
+*.bak
+*.exe
