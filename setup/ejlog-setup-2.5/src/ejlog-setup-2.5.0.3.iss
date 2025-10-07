@@ -60,8 +60,8 @@ Source: "{#SourceBase}\WMS v2.5\WmsRepository\1_WmsUpdateFolder\{#MyJDK}\*"; Des
 Source: "{#SourceBase}\WMS v2.5\RunAsService\*"; DestDir: "{code:GetInstallDir}\RunAsService"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: server\service
 
 [Icons]
-Name: "{autoprograms}\startup\{#MyAppName}"; Filename: "{app}\{#MyMainProg}"; IconFilename: "{#MyIconFile}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyMainProg}"; IconFilename: "{#MyIconFile}"; Comment: "EjLog WMS"
+Name: "{autoprograms}\startup\{#MyAppName}"; Filename: "{app}\{#MySubDir}\{#MyMainProg}"; IconFilename: "{#MyIconFile}"
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MySubDir}\{#MyMainProg}"; IconFilename: "{#MyIconFile}"; Comment: "EjLog WMS"
 
 [Code]
 function GetInstallDir(Param: String): String;

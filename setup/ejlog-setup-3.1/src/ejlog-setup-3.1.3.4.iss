@@ -1,5 +1,5 @@
 #define MyAppName "EjLog 3.1"
-#define MyAppVersion "3.1.3.3"
+#define MyAppVersion "3.1.3.4"
 #define MyAppPublisher "Wipro Ferretto Srl"
 #define MyDefaultDir "C:\WF_WMS"
 #define MyMainProg "WmsLauncher.exe"
@@ -52,34 +52,63 @@ Name: "Tools\visualvm"; Description: "Visualvm"; Flags: checkablealone
 [Files]
 ; Cartelle del Repository v3.0 
 Source: "{#SourceBase}\WMS v2.5\Wms\*"; DestDir: "{code:GetInstallDir}\{#MySubDir}"; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "*2.3.1.0*"
-Source: "{#SourceBase}\WMS v3.0 upgrade\WmsRepository\1_WmsUpdateFolder\runWms.cmd"; DestDir: "{code:GetInstallDir}\{#MySubDir}"; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "*2.3.1.0*"
+Source: "{#SourceBase}\WMS v3.0 upgrade\WmsRepository\1_WmsUpdateFolder\runWms.cmd"; DestDir: "{code:GetInstallDir}\{#MySubDir}"; \
+      Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "*2.3.1.0*"
 Source: "{#SourceBase}\WMS v3.0 upgrade\WmsRepository\1_WmsUpdateFolder\dll\*"; DestDir: "{code:GetInstallDir}\Wms\dll"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SourceBase}\WMS v3.0 upgrade\WmsRepository\1_WmsUpdateFolder\lib\*"; DestDir: "{code:GetInstallDir}\Wms\lib"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#SourceBase}\WMS v3.0 upgrade\WmsRepository\1_WmsUpdateFolder\{#MyJDK}\*"; DestDir: "{code:GetInstallDir}\Wms\{#MyJDK}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#SourceBase}\WMS v3.0 upgrade\WmsRepository\1_WmsUpdateFolder\{#MyJDK}\*"; DestDir: "{code:GetInstallDir}\Wms\{#MyJDK}"; \
+      Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SourceIcon}\wipro-0.ico"; DestDir: "{code:GetInstallDir}\Wms\tmp"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SourceTool}\7z2501-x64.exe"; DestDir: "{app}\Wms\tmp"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SourceTool}\7za.exe"; DestDir: "{app}\Wms\tmp"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 ; Cartelle e file riservate al Server
-Source: "{#SourceBase}\WMS v2.5\Backup\*"; DestDir: "{code:GetInstallDir}\Backup"; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "*2.3.1.0*"; Components: server
-Source: "{#SourceBase}\WMS v3.0 upgrade\WmsRepository\*"; DestDir: "{code:GetInstallDir}\WmsRepository"; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "*2.3.1.0*"; Components: server
-Source: "{#SourceBase}\WMS v2.5\Util\*"; DestDir: "{code:GetInstallDir}\Util"; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "*2.3.1.0*"; Components: server util
+Source: "{#SourceBase}\WMS v2.5\Backup\*"; DestDir: "{code:GetInstallDir}\Backup"; Flags: ignoreversion recursesubdirs createallsubdirs; \
+      Excludes: "*2.3.1.0*"; Components: server
+Source: "{#SourceBase}\WMS v3.0 upgrade\WmsRepository\*"; DestDir: "{code:GetInstallDir}\WmsRepository"; Flags: ignoreversion recursesubdirs createallsubdirs; \
+      Excludes: "*2.3.1.0*"; Components: server
+Source: "{#SourceBase}\WMS v2.5\Util\*"; DestDir: "{code:GetInstallDir}\Util"; Flags: ignoreversion recursesubdirs createallsubdirs; \
+      Excludes: "*2.3.1.0*"; Components: server util
 Source: "{#SourceBase}\WMS v2.5\RunAsService\*"; DestDir: "{code:GetInstallDir}\RunAsService"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: server\service
 Source: "{#SourceBase}\WMS sottocartelle extra\Tools\eclipse.7z"; DestDir: "{code:GetInstallDir}\Tools\eclipse"; Flags: ignoreversion; Components: Tools\eclipse
-Source: "{#SourceBase}\WMS v3.0 upgrade\WmsRepository\1_WmsUpdateFolder\jdk17\*"; DestDir: "{code:GetInstallDir}\Tools\jdk17"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: Tools\jdk17
-Source: "{#SourceBase}\WMS sottocartelle extra\Tools\visualvm\*"; DestDir: "{code:GetInstallDir}\Tools\visualvm"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: Tools\visualvm
+Source: "{#SourceBase}\WMS v3.0 upgrade\WmsRepository\1_WmsUpdateFolder\jdk17\*"; DestDir: "{code:GetInstallDir}\Tools\jdk17"; \
+      Flags: ignoreversion recursesubdirs createallsubdirs; Components: Tools\jdk17
+Source: "{#SourceBase}\WMS sottocartelle extra\Tools\visualvm\*"; DestDir: "{code:GetInstallDir}\Tools\visualvm"; \
+      Flags: ignoreversion recursesubdirs createallsubdirs; Components: Tools\visualvm
 
 [Icons]
 Name: "{autoprograms}\startup\{#MyAppName}"; Filename: "{app}\Wms\{#MyMainProg}"; IconFilename: "{#MyIconFile}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\Wms\{#MyMainProg}"; IconFilename: "{#MyIconFile}"; Comment: "EjLog WMS"
+;Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\Wms\{#MyMainProg}"; IconFilename: "{#MyIconFile}"; Comment: "EjLog WMS"
+
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\Wms\{#MyMainProg}"; \
+      IconFilename: "{#MyIconFile}"; Comment: "EjLog WMS"; Check: ShouldCreateDesktopIcon
 
 [Run]
 Filename: "{app}\Wms\tmp\7z2501-x64.exe"; Parameters: "/S"; Flags: runhidden waituntilterminated
 ; Filename: "{app}\Wms\tmp\7za.exe"; Parameters: "x ""{tmp}\eclipse.7z"" -o""{code:GetInstallDir}\Tools\eclipse"" -y"; Flags: runhidden waituntilterminated; Components: Tools\eclipse
 
 [Code]
+var
+  CreateDesktopIconPage: TWizardPage;
+  DesktopIconCheckBox: TNewCheckBox;
+
 function GetInstallDir(Param: String): String;
 begin
   // Restituisce la directory selezionata dall'utente durante l'installazione
   Result := WizardForm.DirEdit.Text;
+end;
+
+function ShouldCreateDesktopIcon: Boolean;
+begin
+  Result := DesktopIconCheckBox.Checked;
+end;
+
+procedure InitializeWizard;
+begin
+  CreateDesktopIconPage := CreateCustomPage(wpSelectTasks, 'Scelta icona', 
+    'Impostazioni aggiuntive');
+  DesktopIconCheckBox := TNewCheckBox.Create(CreateDesktopIconPage);
+  DesktopIconCheckBox.Parent := CreateDesktopIconPage.Surface;
+  DesktopIconCheckBox.Caption := 'Crea un''icona di avvio sul desktop per ' + ExpandConstant('{#MyAppName}');
+  DesktopIconCheckBox.Checked := True;  // valore predefinito
 end;
