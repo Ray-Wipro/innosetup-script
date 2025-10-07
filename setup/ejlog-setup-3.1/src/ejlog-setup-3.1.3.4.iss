@@ -45,7 +45,6 @@ Name: "server\service"; Description: "Componenti per installazione come servizio
 Name: "util"; Description: "Installazione della cartella Utility"; Flags: checkablealone
 Name: "Tools"; Description: "Installazione della cartella Tools"; Flags: checkablealone
 Name: "Tools\eclipse"; Description: "Ambiente di sviluppo Eclipse"; Flags: checkablealone
-;Name: "Tools\jdk17"; Description: "Java JDK17"; Flags: checkablealone
 Name: "Tools\{#MyJDK}"; Description: "Ambiente Java JDK"; Flags: checkablealone
 Name: "Tools\visualvm"; Description: "Visualvm"; Flags: checkablealone
 
